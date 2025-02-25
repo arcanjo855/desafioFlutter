@@ -19,82 +19,15 @@ class MyForm extends StatelessWidget {
         children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-          child: TextFormField(
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.account_box),
-              suffixIcon: Icon(Icons.clear),
-              labelText: 'Nome',
-              border: OutlineInputBorder(),
-            ),
-            controller: nameController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Digite seu nome';
-              }
-              return null;
-            },
-          ),
+          child: 
+          InputFormName(),
+          
         ),
-        TextFormField(
-          decoration: InputDecoration(
-            prefixIcon: Icon(Icons.mail),
-            suffixIcon: Icon(Icons.clear),
-            labelText: 'Email',
-            border: OutlineInputBorder(),
-          ),
-          controller: emailController,
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Digite seu login';
-            }
-            return null;
-          },
-        ),
-        TextFormField(
-          decoration: InputDecoration(
-            prefixIcon: Icon(Icons.key),
-            suffixIcon: Icon(Icons.clear),
-            labelText: 'senha',
-            border: OutlineInputBorder(),
-          ),
-          obscureText: true,
-          controller: passowordController,
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Digite sua senha!';
-            }
-            return null;
-          },
-        ),
-        TextFormField(
-          decoration: InputDecoration(
-            prefixIcon: Icon(Icons.account_box),
-            suffixIcon: Icon(Icons.clear),
-            labelText: 'DDD',
-            border: OutlineInputBorder(),
-          ),
-          controller: dddController,
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Digite seu DDD';
-            }
-            return null;
-          },
-        ),
-        TextFormField(
-          decoration: InputDecoration(
-            prefixIcon: Icon(Icons.account_box),
-            suffixIcon: Icon(Icons.clear),
-            labelText: 'Telefone',
-            border: OutlineInputBorder(),
-          ),
-          controller: telefoneController,
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Digite seu nome';
-            }
-            return null;
-          },
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          child: 
+          InputFormEmail(),
+          
         ),
         ElevatedButton(
           onPressed: () {
@@ -105,6 +38,41 @@ class MyForm extends StatelessWidget {
           child: const Text('Enviar'),
         )
       ]),
+    );
+  }
+}
+
+
+class InputFormName extends StatelessWidget {
+  const InputFormName({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return TextFormField(
+          decoration: InputDecoration(
+            prefixIcon: Icon(Icons.account_box),
+            suffixIcon: Icon(Icons.clear),
+            labelText: 'name',
+            border: OutlineInputBorder(),
+          )
+    );
+  }
+}
+
+class InputFormEmail extends StatelessWidget {
+  const InputFormEmail({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return TextFormField(
+          decoration: InputDecoration(
+            prefixIcon: Icon(Icons.email),
+            suffixIcon: Icon(Icons.clear),
+            labelText: 'email',
+            border: OutlineInputBorder(),
+          )
     );
   }
 }
