@@ -42,13 +42,15 @@ class _HomeState extends State<Home> {
 
 class UserPage extends StatelessWidget{
   const UserPage({Key?key}) : super(key:key);
+  
+  get userToken => null;
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
       child: Center(
-        child: Text("perfil usuario"),
+        child: Text('Perfil do usuario'),
       ),
     );
   }

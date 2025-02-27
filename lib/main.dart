@@ -66,6 +66,7 @@ Future<void> login() async {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                Image.asset('./src/images/moon.png'),
                 TextFormField(
                   controller: emailController,
                   decoration: InputDecoration(labelText: 'Email'),
