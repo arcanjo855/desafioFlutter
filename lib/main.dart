@@ -70,6 +70,7 @@ Future<void> login() async {
                   controller: emailController,
                   decoration: InputDecoration(labelText: 'Email'),
                   keyboardType: TextInputType.emailAddress,
+                  autofocus: true,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Digite um e-mail válido';

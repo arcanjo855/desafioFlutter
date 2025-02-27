@@ -10,17 +10,62 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int _opcaoSelecionada = 0;
+  @override
+  Widget build(BuildContext context) {    return MaterialApp(
+    home: DefaultTabController(length: 2, child: Scaffold(
+      appBar: AppBar(title: Text("")),
+      body:IndexedStack(
+        index: _opcaoSelecionada,
+        children: <Widget>[
+          UserPage(),
+          SearchPage()
+        ],
+
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: _opcaoSelecionada,
+        onTap: (opccao){
+          setState(() {
+            _opcaoSelecionada = opccao;
+          });
+        },
+        items: [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Usuarios'),
+      ],)
+      ),
+    ));
+  }
+}
+
+class UserPage extends StatelessWidget{
+  const UserPage({Key?key}) : super(key:key);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("home page"),
-        centerTitle: true,
+    // TODO: implement build
+    return Container(
+      child: Center(
+        child: Text("perfil usuario"),
       ),
-      
-      body: Center(
-        child: Text(widget.userToken),
-      )
     );
   }
 }
+
+
+class SearchPage extends StatelessWidget{
+  const SearchPage({Key?key}) : super(key:key);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Container(
+      child: Center(
+        child: Text("lista de usuarios"),
+      ),
+    );
+  }
+}
+
