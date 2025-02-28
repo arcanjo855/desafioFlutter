@@ -3,7 +3,10 @@ import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
 import 'package:desafio_flutter/pages/register_screen.dart';// Importa a tela de registro
-import 'package:desafio_flutter/pages/home_screen.dart';
+import 'package:desafio_flutter/pages/users_list_screen.dart';
+import 'package:desafio_flutter/pages/user_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -16,8 +19,11 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  final storage = FlutterSecureStorage();
+  String? token;
+
 Future<void> login() async {
-    final url = "http://10.2.3.59:3000/login";
+    final url = "http://192.168.18.6:3000/login";
 
 
     var body = json.encode({
@@ -31,11 +37,12 @@ Future<void> login() async {
       body: body,
     );
 
-    var userToken = res.body;
+    await storage.write(key: 'token', value: res.body);
+    print('Token armazenado com sucesso!');
     
     if (res.statusCode == 200) {
     Navigator.push(context, 
-    MaterialPageRoute(builder: (context) => Home(userToken)));
+    MaterialPageRoute(builder: (context) => HomePage()));
     } else {
       showDialog(
           context: context,
@@ -69,10 +76,7 @@ Future<void> login() async {
                 Image.asset('./src/images/moon.png',
                 width: 200,
                 height: 200,),
-                SizedBox(height: 80),
-                Text("Login",
-                style: TextStyle(fontSize: 24)),
-                SizedBox(height: 20),
+                
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0), // Padding externo
                   child: TextFormField(

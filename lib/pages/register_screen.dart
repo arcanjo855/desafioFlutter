@@ -20,7 +20,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 Future<void> register() async {
   if (_formKey.currentState!.validate()) {
     }
-    final url = "http://10.2.3.59:3000/register";
+    final url = "http://192.168.18.6:3000/register";
 
 
     var body = json.encode({
