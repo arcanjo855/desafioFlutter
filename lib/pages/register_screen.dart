@@ -72,7 +72,12 @@ Future<void> register() async {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                TextFormField(
+                Text("Cadastro",
+                style: TextStyle(fontSize: 24)),
+                SizedBox(height: 20),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0), // Padding externo
+                  child: TextFormField(
                   controller: nameController,
                   decoration: InputDecoration(labelText: 'Nome'),
                   validator: (value) {
@@ -82,8 +87,12 @@ Future<void> register() async {
                     return null;
                   },
                 ),
+                ),
                 SizedBox(height: 10),
-                TextFormField(
+
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0), // Padding externo
+                  child: TextFormField(
                   controller: emailController,
                   decoration: InputDecoration(labelText: 'Email'),
                   keyboardType: TextInputType.emailAddress,
@@ -94,8 +103,12 @@ Future<void> register() async {
                     return null;
                   },
                 ),
+                ),                
                 SizedBox(height: 10),
-                TextFormField(
+
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0), // Padding externo
+                  child: TextFormField(
                   controller: passwordController,
                   decoration: InputDecoration(labelText: 'Senha'),
                   obscureText: true,
@@ -106,8 +119,12 @@ Future<void> register() async {
                     return null;
                   },
                 ),
+                ),                
                 SizedBox(height: 10),
-                TextFormField(
+
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0), // Padding externo
+                  child: TextFormField(
                   maxLength: 2,
                   controller: areaCodeController,
                   decoration: InputDecoration(labelText: 'DDD'),
@@ -119,8 +136,12 @@ Future<void> register() async {
                     return null;
                   },
                 ),
+                ), 
                 SizedBox(height: 10),
-                TextFormField(
+
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0), // Padding externo
+                  child: TextFormField(
                   maxLength: 9,
                   controller: numberController,
                   decoration: InputDecoration(labelText: 'Telefone'),
@@ -132,6 +153,9 @@ Future<void> register() async {
                     return null;
                   },
                 ),
+                ), 
+
+                
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: register,

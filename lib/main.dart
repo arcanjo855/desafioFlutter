@@ -60,14 +60,22 @@ Future<void> login() async {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
           child: Form(
             key: _formKey,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Image.asset('./src/images/moon.png'),
-                TextFormField(
+                Image.asset('./src/images/moon.png',
+                width: 200,
+                height: 200,),
+                SizedBox(height: 80),
+                Text("Login",
+                style: TextStyle(fontSize: 24)),
+                SizedBox(height: 20),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0), // Padding externo
+                  child: TextFormField(
                   controller: emailController,
                   decoration: InputDecoration(labelText: 'Email'),
                   keyboardType: TextInputType.emailAddress,
@@ -79,8 +87,12 @@ Future<void> login() async {
                     return null;
                   },
                 ),
+                ),
+                
                 SizedBox(height: 10),
-                TextFormField(
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0), // Padding externo
+                  child: TextFormField(
                   controller: passwordController,
                   decoration: InputDecoration(labelText: 'Senha'),
                   obscureText: true,
@@ -91,6 +103,8 @@ Future<void> login() async {
                     return null;
                   },
                 ),
+                ),
+                
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: login,
