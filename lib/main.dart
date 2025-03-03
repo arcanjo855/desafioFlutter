@@ -5,16 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:desafio_flutter/pages/register_screen.dart';// Importa a tela de registro
 import 'package:desafio_flutter/pages/users_list_screen.dart';
 import 'package:desafio_flutter/pages/user_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  LoginScreenState createState() => LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -118,7 +119,7 @@ Future<void> login() async {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => UserListScreen()),
+                      MaterialPageRoute(builder: (context) => RegisterScreen()),
                     );
                   },
                   child: Text('Não tem uma conta? Registre-se aqui'),

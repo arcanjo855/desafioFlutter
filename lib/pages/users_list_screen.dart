@@ -5,11 +5,13 @@ import 'dart:convert';
 
 
 class UserListScreen extends StatefulWidget {
+  const UserListScreen({super.key});
+
   @override
-  _UserListScreenState createState() => _UserListScreenState();
+  UserListScreenState createState() => UserListScreenState();
 }
 
-class _UserListScreenState extends State<UserListScreen> {
+class UserListScreenState extends State<UserListScreen> {
   List<dynamic> users = [];
   bool isLoading = true;
   bool hasError = false;
