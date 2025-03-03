@@ -2,9 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
-import 'package:desafio_flutter/pages/register_screen.dart';// Importa a tela de registro
-import 'package:desafio_flutter/pages/users_list_screen.dart';
-import 'package:desafio_flutter/pages/user_screen.dart';
+import 'package:desafio_flutter/pages/register_screen.dart';
+import 'package:desafio_flutter/pages/home_screen.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 
