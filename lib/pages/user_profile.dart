@@ -61,7 +61,7 @@ class UserProfileScreen extends StatelessWidget {
                     SizedBox(width: 10),
                     Text(
                       "Criado em: ${data!['created_at']}",
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 14),
                     ),
                   ],
                 ),
