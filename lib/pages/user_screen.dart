@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final storage = FlutterSecureStorage();
   String? token;
-  List<dynamic>? data;
+  List<dynamic> data = [];
   bool isLoading = true;
 
   @override
@@ -26,9 +26,7 @@ class _HomePageState extends State<HomePage> {
   _loadToken() async {
     
     token = await storage.read(key: 'token');
-    print(token);
     if (token != null) {
-      
       _fetchData();
     } else {
       setState(() {
@@ -41,21 +39,23 @@ class _HomePageState extends State<HomePage> {
 
   // Buscar dados da API com o token JWT
   _fetchData() async {
-    print(token);
+    
     final response = await http.get(
       Uri.parse('http://192.168.18.6:3000/userInfo'),
       headers: {
-        'Authorization': 'Bearer ${[token]}',
+        'Authorization': 'Bearer $token',
         'Content-Type': 'application/json',
       },
     );
-
+    print(response.body);
     if (response.statusCode == 200) {
-      
       setState(() {
         data = json.decode(response.body);
         isLoading = false;
       });
+
+      print(data);
+      
     } else {
       setState(() {
         isLoading = false;
@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Dados do PostgreSQL')),
+      appBar: AppBar(title: Text('perfil')),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
           : data == null
@@ -77,8 +77,8 @@ class _HomePageState extends State<HomePage> {
                   itemCount: data!.length,
                   itemBuilder: (context, index) {
                     return ListTile(
-                      title: Text(data![index]['nome']), // exemplo de campo
-                      subtitle: Text(data![index]['descricao']), // exemplo de campo
+                      title: Text(data![index]['name']), // exemplo de campo
+                      subtitle: Text(data![index]['email']), // exemplo de campo
                     );
                   },
                 ),

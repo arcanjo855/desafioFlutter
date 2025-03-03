@@ -20,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController passwordController = TextEditingController();
 
   final storage = FlutterSecureStorage();
-  String? token;
+  List<dynamic> token = [];
 
 Future<void> login() async {
     final url = "http://192.168.18.6:3000/login";
@@ -37,10 +37,9 @@ Future<void> login() async {
       body: body,
     );
 
-    await storage.write(key: 'token', value: res.body);
-    print('Token armazenado com sucesso!');
-    
+    final Map<String, dynamic> responseData = json.decode(res.body);
     if (res.statusCode == 200) {
+    await storage.write(key: 'token', value: responseData['token']);
     Navigator.push(context, 
     MaterialPageRoute(builder: (context) => HomePage()));
     } else {
@@ -119,7 +118,7 @@ Future<void> login() async {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => RegisterScreen()),
+                      MaterialPageRoute(builder: (context) => UserListScreen()),
                     );
                   },
                   child: Text('Não tem uma conta? Registre-se aqui'),
