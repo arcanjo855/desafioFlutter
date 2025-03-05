@@ -17,7 +17,7 @@ class NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     final List<Widget> pages = [
       UserProfileScreen(data: widget.userData),
-      const UserListScreen(),
+      UserListScreen(),
     ];
 
     return Scaffold(
